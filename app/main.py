@@ -5,6 +5,6 @@ from app.routers.shop import router as shop_router
 
 app = FastAPI(title="Pyxis Store Info API")
 
-app.include_router(flow_router, prefix="/api/v1")
-app.include_router(sales_router, prefix="/api/v1")
-app.include_router(shop_router, prefix="/api/v1")
+app.include_router(flow_router, prefix="/fastapi/v1")
+app.include_router(sales_router, prefix="/fastapi/v1")
+app.include_router(shop_router, prefix="/fastapi/v1")
