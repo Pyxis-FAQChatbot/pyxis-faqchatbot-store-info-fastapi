@@ -22,8 +22,11 @@ def get_age_sales(dong: str, db: Session = Depends(get_db)):
     if not dong:
         raise HTTPException(status_code=400, detail="dong parameter is required")
 
+    dong = dong.strip().replace(" ", "") # 공백 제거
+
     query = text("""
         SELECT year_quarter,
+               service_name,
                age_10_amount,
                age_20_amount,
                age_30_amount,
@@ -48,6 +51,7 @@ def get_age_sales_count(dong: str, db: Session = Depends(get_db)):
 
     query = text("""
         SELECT year_quarter,
+               service_name,
                age_10_count,
                age_20_count,
                age_30_count,

@@ -21,6 +21,8 @@ def get_flow_hourly(dong: str, db: Session = Depends(get_db)):
     if not dong:
         raise HTTPException(status_code=400, detail="dong parameter is required")
 
+    dong = dong.strip().replace(" ", "") # 공백 제거
+
     query = text("""
         SELECT 
             DATE_FORMAT(measure_time, '%Y-%m-%d %H:00') AS hour,

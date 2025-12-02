@@ -21,6 +21,8 @@ def get_shop_count(dong: str, db: Session = Depends(get_db)):
     if not dong:
         raise HTTPException(status_code=400, detail="dong parameter is required")
 
+    dong = dong.strip().replace(" ", "") # 공백 제거
+
     query = text("""
         SELECT mid_category_name AS category,
                COUNT(*) AS cnt
