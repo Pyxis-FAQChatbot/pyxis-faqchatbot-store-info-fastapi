@@ -34,7 +34,7 @@ def get_age_sales(dong: str, db: Session = Depends(get_db)):
                age_50_amount,
                age_60_amount
         FROM age_sales
-        WHERE dong_name = :dong
+        WHERE dong_name LIKE CONCAT('%', :dong, '%')
         ORDER BY year_quarter
     """)
 
@@ -59,7 +59,7 @@ def get_age_sales_count(dong: str, db: Session = Depends(get_db)):
                age_50_count,
                age_60_count
         FROM age_sales
-        WHERE dong_name = :dong
+        WHERE dong_name LIKE CONCAT('%', :dong, '%')
         ORDER BY year_quarter
     """)
 

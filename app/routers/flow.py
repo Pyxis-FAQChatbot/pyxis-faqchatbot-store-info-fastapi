@@ -28,7 +28,7 @@ def get_flow_hourly(dong: str, db: Session = Depends(get_db)):
             DATE_FORMAT(measure_time, '%Y-%m-%d %H:00') AS hour,
             SUM(visitor) AS visitor_sum
         FROM flow_population
-        WHERE dong_name = :dong
+        WHERE dong_name LIKE CONCAT('%', :dong, '%')
         GROUP BY hour
         ORDER BY hour
     """)

@@ -27,7 +27,7 @@ def get_shop_count(dong: str, db: Session = Depends(get_db)):
         SELECT mid_category_name AS category,
                COUNT(*) AS cnt
         FROM shop_info
-        WHERE dong_name = :dong
+        WHERE dong_name LIKE CONCAT('%', :dong, '%')
         GROUP BY category
         ORDER BY cnt DESC
     """)
