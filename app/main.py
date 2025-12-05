@@ -2,9 +2,11 @@ from fastapi import FastAPI
 from app.routers.flow import router as flow_router
 from app.routers.sales import router as sales_router
 from app.routers.shop import router as shop_router
+from app.routers.insight import router as insight_router
 
 app = FastAPI(title="Pyxis Store Info API")
 
 app.include_router(flow_router, prefix="/fastapi/v1")
 app.include_router(sales_router, prefix="/fastapi/v1")
 app.include_router(shop_router, prefix="/fastapi/v1")
+app.include_router(insight_router, prefix="/fastapi/v1")
